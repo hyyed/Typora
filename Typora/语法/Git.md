@@ -3144,10 +3144,8 @@ git merge -Xignore-space-change whitespace
 
 ```shell
 # 将 bugwork 合并到 mian 下
-git rebase main bugWork
-
-# 此时 HEAD 在 main 上，将 main 合并到bugWork上
-git rebase bugWork 
+git rebase bugWork main # main覆盖 bugWork
+git rebase bugWork 	# 此时 HEAD 在 main 上，main覆盖合并(简单合并)bugWork
 ```
 
 
@@ -3170,8 +3168,7 @@ git push; 		# git push 后会将本地的远程分支同步到本地的头提交
 
 # 远程分支的基于和本地分支的基于不同时，解决push失败问题
 git fetch;
-git rebase o/mina; 	# 丢弃远程分支的新提交，将main直接放到拉取到的节点作为远程分支的父亲
-git rebase o/mina; 	# 合并远程分支的新提交，将main直接放到拉取到的节点作为远程分支的父亲
+git rebase o/mina; 	# 覆盖分支：丢弃远程分支的新提交，将main直接放到拉取到的节点作为远程分支的父亲
 git push;
 
 ```
@@ -3262,3 +3259,6 @@ git commit -a -m 'new branch'
 git push origin mybranch:remybranch
 ```
 
+
+
+## 补丁	
